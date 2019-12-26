@@ -16,7 +16,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-  res.send('test World!');
+  res.send('<style type="text/css">table,td,tr{border:1px black solid}</style><table><tr><td>姓名</td><td>陳鼎鈞</td></tr><tr><td>學號</td><td>M10807003</td></tr><tr><td>地址</td><td>開南大學</td></tr>');
 });
 
 app.listen(3000, function () {
