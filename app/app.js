@@ -14,9 +14,27 @@
 
 var express = require('express');
 var app = express();
+var request = require("request");
+/*var url = 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_2330.tw';
+var http = require("http");*/
+var data,data2;
+
+ request({
+    url: "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_2330.tw",
+    method: "GET"
+  }, function(e,r,b) {
+      if(!e) {
+        console.log(b);
+        data=b;
+    }
+  });
+
+
+ data = JSON.stringify(data, ["ts", "tko"], 2);
+
 
 app.get('/', function (req, res) {
-  res.send('<style type="text/css">table,td,tr{border:1px black solid}</style><table><tr><td>姓名</td><td>陳鼎鈞</td></tr><tr><td>學號</td><td>M10807003</td></tr><tr><td>地址</td><td>開南大學</td></tr>');
+  res.send(data2);
 });
 
 app.listen(3000, function () {
